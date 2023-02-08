@@ -1,6 +1,10 @@
 let memoryCard = document.querySelectorAll(".card");
-let displayPoints = document.getElementById("showScore") as HTMLSpanElement;
-let displayTime = document.getElementById("showTime") as HTMLSpanElement;
+let displayPoints = document.getElementById(
+  "showScore"
+) as HTMLSpanElement;
+let displayTime = document.getElementById(
+  "showTime"
+) as HTMLSpanElement;
 
 //Variabler för flip funktionen
 let flippedCard = false;
@@ -19,7 +23,7 @@ let clock = setInterval(() => {
   sec++;
 }, 1000);
 
-// Funktion som skapar event listener för varje .card
+// Funktion som skapar event listener för varje kort
 function startGame() {
   for (let i = 0; i < memoryCard.length; i++) {
     memoryCard[i].addEventListener("click", flip);
@@ -59,9 +63,11 @@ function checkMatch() {
     displayPoints.innerHTML = String(points);
   }
 
-  if (points === 6) {
+  if (points === 4) {
     //Om användaren får full pott
-    alert(`Du vann! Det tog ${sec} sekunder och du fick ${points} poäng!`);
+    alert(
+      `Bravo! Det tog ${sec} sekunder och du fick ${points} poäng!`
+    );
 
     //Stoppar timern när användaren vunnit
     clearInterval(clock);
@@ -107,14 +113,16 @@ function resetGame() {
 //Variabler till shuffle funktionen
 let parentDiv = document.getElementById("memory") as HTMLDivElement;
 let cardDiv = parentDiv.children;
-let frag = document.createDocumentFragment();
+let fragment = document.createDocumentFragment();
 
 //Funktion som shufflar korten
 function shuffleHTML() {
   while (cardDiv.length) {
-    frag.appendChild(cardDiv[Math.floor(Math.random() * cardDiv.length)]);
+    fragment.appendChild(
+      cardDiv[Math.floor(Math.random() * cardDiv.length)]
+    );
   }
-  parentDiv.appendChild(frag);
+  parentDiv.appendChild(fragment);
 }
 
 startGame();
