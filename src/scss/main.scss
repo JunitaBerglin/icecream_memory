@@ -1,0 +1,51 @@
+@use "mixins";
+
+body {
+  margin: 0;
+  background-color: #f9d080;
+  font-family: monospace;
+
+  h2 {
+    text-align: center;
+    font-size: 45px;
+    padding: 5px;
+  }
+}
+
+.valueContainer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 12%;
+
+  .points,
+  .time {
+    font-size: 25px;
+  }
+}
+.container {
+  @include mixins.container;
+}
+
+.memory {
+  @include mixins.game;
+
+  @include mixins.mobile {
+    height: 50vh;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.card {
+  @include mixins.cards;
+}
+
+.card__front {
+  @include mixins.cards-front;
+}
+
+.flipped {
+  @include mixins.cards-flipped;
+}
